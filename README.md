@@ -37,11 +37,8 @@ Turn on, rollback on failures turned on for circuit breaker
 Turn on, rollback on failures from CloudWatch alarms
 #### 4.4 Transform some light services into Lambda
 Use lambda's feature to starting up from containers.
-
 Helpuful to cut some more costs but needs work & testing in stage.
-
 Big disadvantage is the option to just "turn off"
-
 Put Cloudwatch alarms to lambda! + quick pipeline to set concurrency to zero in case of issues.
 
 #### 4.5 Stop/Start Stage Cluster at need Afterworking Hours & over the weekend
