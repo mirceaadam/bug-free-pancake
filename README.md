@@ -1,11 +1,11 @@
-# My Tips 19.07.2024 - version 1.1
+# My Tips 19.07.2024 - version 1.2
 
 ### Pipeline upgrades
 #### Emergency Hotfix Pipeline for production
 Custom Separate emergency hotfix pipeline for production deployments
 Separate stage that can be triggered by an Environment variable
 
-### Shift Left IaaC Security Concept (** new **)
+#### Shift Left IaaC Security Concept (** new **)
 Check for security problems earlyer in the pipeline with tools like
   - checkov (https://www.checkov.io/) - perhaps you arealy have it in the terraform validate section
   - kicks (https://kics.io/index.html) //free open source
@@ -13,7 +13,7 @@ Disadvantage is that it will take longer to deploy something but it will catch
 security infrastructure and docker container issues or open security holes.
 - implement on test branches first
 
-### Faster Pipelines
+#### Faster Pipelines
 Speed is not always the answer.
 Separate pipeline for a "BaseImage" type of scenario where frameorks are already setup.
 These images get built automatically on a weekly bases.
@@ -27,7 +27,7 @@ Incident response
 If not already implemented.
 
 ### Cloudflare implementation
-As udnerstood, already in discussion to be implemented.
+As I understood, already in discussion to be implemented.
 
 ### ECS IDEAS
 #### HealthCheck in ECS at the task level 
@@ -62,7 +62,8 @@ Space increases/updates do not have downtime
 A bit more expensive but maybe worth it
 Read Replica
 Other features
-Test disaster recovery and restore in stage of the DB using awscli or other.
+Test disaster recovery and restore in stage of the DB using awscli or other
+Check examples is files/rds folder.
 
 ### Migrate Stage to a different AWS account
 Reasoning - isolation and better cost control

@@ -1,0 +1,48 @@
+### Commmand Model
+aws rds restore-db-cluster-to-point-in-time \
+    --source-db-cluster-identifier mysourcedbcluster \
+    --db-cluster-identifier mytargetdbcluster \
+    --restore-to-time 2017-10-14T23:45:00.000Z
+
+  
+
+# TEST-MIGRATION PIR (Quickly)
+aws rds restore-db-cluster-to-point-in-time \
+    --source-db-cluster-identifier Test-db-cluster \
+    --db-cluster-identifier Test-db-cluster-pir \
+    --db-subnet-group-name your-subnetgroup-xxxx \
+    --restore-to-time 202Y-MM-DDTHH:MM:00.000Z \
+    --profile test-migration && \
+aws rds create-db-instance \
+    --db-instance-identifier db-awscli-instance-01 \
+    --db-cluster-identifier Test-db-cluster-pir \
+    --engine aurora-postgresql \
+    --db-instance-class db.t3.medium \
+    --availability-zone eu-central-1a \
+    --profile test-migration
+
+
+## (!!!) Observations
+--restore-to-time: 
+    - minus 3 hours from Romania in UTC.
+    - FORMAT: 202Y-MM-DDTHH:MM:00.000Z, example: 2023-09-08T07:50:00.000Z
+Command to find out --db-subnet-group-name: 
+  aws rds describe-db-subnet-groups \
+      --profile test | grep postgresql  
+
+Command to find out VpcSecurityGroups:
+aws rds describe-db-clusters \
+    --db-cluster-identifier your-test-db-cluster \
+    --query 'DBClusters[].VpcSecurityGroups[].VpcSecurityGroupId' \
+	  --profile test
+Command to find DBClusterSnapshots:
+aws rds describe-db-cluster-snapshots \
+    --db-cluster-identifier your-test-db-cluster  \
+    --query 'DBClusterSnapshots[].DBClusterSnapshotIdentifier' \
+	  --profile test
+Command to find DBEngineVersions:
+aws rds describe-db-engine-versions \
+    --engine aurora-postgresql \
+    --region eu-central-1 \
+    --query "DBEngineVersions[].EngineVersion" \
+    --profile test       
