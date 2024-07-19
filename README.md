@@ -30,7 +30,7 @@ As I understood, already in discussion to be implemented.
 #### 4.1 HealthCheck in ECS at the task level 
 - unlocks the use / potential of circuit breaker
 - https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-taskdefinition-healthcheck.html
-- More info in files/healthcheck-examples.json
+- More info in files/healthcheck-examples.json for usage in task definitions
 #### 4.2 Deployment circuit breaker
 Turn on, rollback on failures turned on for circuit breaker
 #### 4.3 CloudWatch configuration
