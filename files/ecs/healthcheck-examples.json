@@ -1,0 +1,38 @@
+"healthCheck": {
+    "command": [
+        "CMD-SHELL",
+        "curl -k -IX GET http://localhost:5000/health || exit 1"
+    ],
+    "interval": 30,
+    "timeout": 5,
+    "retries": 3,
+    "startPeriod": 30
+}
+
+
+OR
+
+"healthCheck": {
+    "command": [
+        "CMD-SHELL",
+        "agent health"
+    ],
+    "interval": 30,
+    "timeout": 5,
+    "retries": 3,
+    "startPeriod": 15
+}
+
+
+OR
+
+"healthCheck": {
+    "command": [
+        "CMD-SHELL",
+        "curl -k -IX GET http://localhost/health || exit 1"
+    ],
+    "interval": 30,
+    "timeout": 5,
+    "retries": 3,
+    "startPeriod": 30
+}
