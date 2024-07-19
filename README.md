@@ -1,4 +1,4 @@
-# My Tips 19.07.2024 - version 1.0
+# My Tips 19.07.2024 - version 1.1
 
 ### Pipeline upgrades
 #### Emergency Hotfix Pipeline for production
@@ -90,14 +90,18 @@ Ex: Monitor simple very important KPI's like Database connections, 502's from th
 Disadvantages: sometimes buggy interface.
 
 ### Logs Management
-Cloudwatch is ok - but sometimes searching can be hard and you feel like it would use more versatility to parse them.
+
+Big topic, but Cloudwatch is ok - but sometimes searching can be hard and you feel like it would use more versatility to parse them.
 Just use all available tools built in AWS to leverage the power of live logging, searching for certain strings, errors, etc.
 
 Push to S3 and querry with Athena or just check some more best practices. Everyone does it in some different way. 
 
 Datadog has the posibility of ingesting logs and has prediction capability in the APM section.
 But it requires log sending from ECS/task definition level and service.
-Check files/log-configuration.json and files/log-router.json of how I used them for dotnet.
+Check: 
+- files/ecs/log-configuration.json 
+- files/ecs/log-router.json 
+of how I used them for dotnet.
 Logs ingestion in datadog is expensive if not reduced significally but the prediction and instant error tracking is worth it.
 Implementation is not that easy but more details here: https://docs.datadoghq.com/integrations/ecs_fargate/?tab=webui
 
