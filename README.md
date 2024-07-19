@@ -1,4 +1,4 @@
-# My Tips 19.07.2024 - version 1.4
+# My Tips 19.07.2024 - version 1.5
 
 ## 1. Pipeline upgrades
 #### 1.1 Emergency Hotfix Pipeline for production
