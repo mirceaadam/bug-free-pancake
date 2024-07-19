@@ -1,4 +1,4 @@
-# My Tips 19.07.2024 - version 1.5
+# My Tips 19.07.2024 - version 1.6
 
 ## 1. Pipeline upgrades
 #### 1.1 Emergency Hotfix Pipeline for production
@@ -113,4 +113,4 @@ of how I used them for dotnet.
 
 ## 11. Have dedicated 1st Level Operations Team
 - Troubleshoot and Investigate based on Dashboards
-- Incident response: quick fixes.
+- Incident response: quick commands & rights to restart ECS or perform basic ops where needed.
