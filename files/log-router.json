@@ -1,0 +1,32 @@
+{
+    "name": "YourBackend-log-router",
+    "image": "amazon/aws-for-fluent-bit:stable",
+    "cpu": 0,
+    "links": [],
+    "portMappings": [],
+    "essential": false,
+    "entryPoint": [],
+    "command": [],
+    "environment": [],
+    "environmentFiles": [],
+    "mountPoints": [],
+    "volumesFrom": [],
+    "secrets": [],
+    "user": "0",
+    "dnsServers": [],
+    "dnsSearchDomains": [],
+    "extraHosts": [],
+    "dockerSecurityOptions": [],
+    "dockerLabels": {},
+    "ulimits": [],
+    "systemControls": [],
+    "firelensConfiguration": {
+        "type": "fluentbit",
+        "options": {
+            "config-file-type": "file",
+            "config-file-value": "/fluent-bit/configs/parse-json.conf",
+            "enable-ecs-log-metadata": "true"
+        }
+    },
+    "credentialSpecs": []
+}

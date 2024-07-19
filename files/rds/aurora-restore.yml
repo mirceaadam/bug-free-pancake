@@ -1,0 +1,55 @@
+AWSCLI: RDS Aurora Mysql Restore (from snapshot/Point-In-Time) Quick Tip-Bit 
+
+aws rds restore-db-cluster-from-snapshot or restore-db-cluster-to-point-in-time is not enough these commands create only the cluster, you need to follow immediately with aws rds create-db-instance (same as Postgresql)
+
+- Have prepared at hand --vpc-security-group-ids and --db-subnet-group-name
+- Have prepared your local ~\.aws\config and credentials with the destination account so you can do  --profile in the command
+
+example cli commands:
+aws rds restore-db-cluster-from-snapshot \
+    --snapshot-identifier appdbname-test-before-upgrade \
+    --engine aurora-mysql \
+    --engine-version 8.0.mysql_aurora.3.05.2 \
+    --db-cluster-identifier your-test-db-cluster \
+    --vpc-security-group-ids sg-xxxxxxxxx \
+	  --db-subnet-group-name adf-infra-appdbname-db-appdbnamesubnetgroup-dimqordbv0n0 \
+    --tags \
+    Key=Application,Value=appdbname \
+    Key=Environment,Value=Test \
+    Key=Country,Value=Frankfurt \
+    Key="Legal Entity",Value="Organization Insight AS" \
+    Key=Description,Value="Upgrade Test Cluster" \
+    Key=CreatedBy,Value="operations@Organization.com" \
+	  --profile test
+	
+aws rds create-db-instance \
+    --db-instance-identifier your-restored-instance-001 \
+    --db-cluster-identifier test-your-db-cluster \
+    --engine aurora-mysql \
+    --db-instance-class db.t3.medium \
+    --availability-zone eu-north-1a \
+    --tags \
+    Key=Application,Value=appdbname \
+    Key=Environment,Value=Test \
+    Key=Country,Value=Frankfurt \
+    Key="Legal Entity",Value="Organization Insight AS" \
+    Key=Description,Value="Upgrade Test Cluster" \
+    Key=CreatedBy,Value="operations@Organization.com" \
+    --profile test	
+
+Command to find out VpcSecurityGroups:
+aws rds describe-db-clusters \
+    --db-cluster-identifier your-test-db-cluster \
+    --query 'DBClusters[].VpcSecurityGroups[].VpcSecurityGroupId' \
+	  --profile test
+Command to find DBClusterSnapshots:
+aws rds describe-db-cluster-snapshots \
+    --db-cluster-identifier your-test-db-cluster  \
+    --query 'DBClusterSnapshots[].DBClusterSnapshotIdentifier' \
+	  --profile test
+Command to find DBEngineVersions:
+aws rds describe-db-engine-versions \
+    --engine aurora-mysql \
+    --region eu-north-1 \
+    --query "DBEngineVersions[].EngineVersion" \
+    --profile test   

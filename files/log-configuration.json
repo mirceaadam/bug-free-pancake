@@ -1,0 +1,13 @@
+"logConfiguration": {
+    "logDriver": "awsfirelens",
+    "options": {
+        "apikey": "youDDAPIKEY",
+        "provider": "ecs",
+        "dd_service": "your-backend",
+        "Host": "http-intake.logs.datadoghq.eu",
+        "TLS": "on",
+        "dd_source": "csharp",
+        "dd_tags": "env:test",
+        "Name": "datadog"
+    },
+    "secretOptions": []
