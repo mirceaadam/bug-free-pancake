@@ -16,7 +16,7 @@ security infrastructure and docker container issues or open security holes.
 #### 1.3 Faster Pipelines
 - Speed is not always the answer..
 - Separate pipeline for a "BaseImage" / "GoldenImage" type of scenario can be usefull to speed up where frameorks can be already setup.
-- These images get built automatically on a weekly bases.
+- These images get built automatically on a weekly basis.
 - Prebuilt images or perhaps caching docker images might be a solution..
 - Goes nicely hand in hand with `point 4.7` below.
 
@@ -59,6 +59,7 @@ Usage:
 - based on this template you standardize the others and you have expected behaviour and easier to upgrade/maintain/test
 
 ## 5. Database to Aurora
+- https://aws.amazon.com/rds/aurora/features/
 - Space increases/updates do not have downtime
 - A bit more expensive but maybe worth it
 - Read Replica
@@ -84,10 +85,9 @@ Reasoning - isolation and better cost control
 - For no additional costs, you can configure widgets that check metrics or logs and even setup alarms nicely in one place
 - Go to AWS System Manager, Cloudwatch Dashboard, Create a dashboad. 
 - Add widget for Metrics, Logs or even Alarms.
-You can even add other data sources like S3, lambda, etc..
-
+- You can even add other data sources like S3, lambda, etc..
 - Ex: Monitor simple very important KPI's like Database connections, 502's from the ALB, etc.
-- Disadvantages: sometimes buggy interface.
+- **Disadvantages**: sometimes buggy interface.
 
 ## 9. Logs Management
 - Big topic, but Cloudwatch is ok - but sometimes searching can be hard and you feel like it would use more versatility to parse them.
